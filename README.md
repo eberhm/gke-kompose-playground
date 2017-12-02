@@ -23,9 +23,11 @@ Push images to your gke cluster's registry
 
 https://cloud.google.com/container-registry/docs/pushing-and-pulling
 
+```bash
 gcloud docker -- push gcr.io/<your-project-id>/kompose-fpm:1.1
 gcloud docker -- push gcr.io/<your-project-id>/kompose-web:1.1
 gcloud docker -- push gcr.io/<your-project-id>/kompose-db:1.1
+```
 
 Kompose app
 
