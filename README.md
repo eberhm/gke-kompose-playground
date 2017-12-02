@@ -1,10 +1,14 @@
-#Testing GKE and kompose
+# Testing GKE and kompose
 
-#Resources
+# Resources
 https://kubernetes.io/docs/tools/kompose/user-guide/
+
 https://cloud.google.com/community/tutorials/developing-services-with-k8s
+
 https://cloud.google.com/container-registry/docs/pushing-and-pulling
+
 https://kubernetes.io/docs/tutorials/stateless-application/expose-external-ip-address/
+
 
 
 # Project Setup
@@ -61,7 +65,7 @@ Yous should see a LoadBalancer. Get the external ip as the your_gke_lb_ip
 
 `curl -X DELETE http://<your_gke_lb_ip>:8080/app_dev.php/notes/1 -H 'Content-Type: application/json' -w "\n"`
 
-##Debugging
+## Debugging
 
 To get into a container
 
