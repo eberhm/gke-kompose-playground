@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+    web:
+        build:
+            context: ./
+            dockerfile: docker/nginx/Dockerfile
+        image: gcr.io/test-teleprecense/kompose-web:1.1
+        ports:
+            - "8080:80"
+        links:
+            - php
+    db:
+        build:
+            context: ./
+            dockerfile: docker/db/Dockerfile
+        image: gcr.io/test-teleprecense/kompose-db:1.1
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_USER: api
+            MYSQL_PASSWORD: 123456
+            MYSQL_DATABASE: api_dev
+    php:
+        build:
+            context: ./
+            dockerfile: docker/fpm/Dockerfile
+        image: gcr.io/test-teleprecense/kompose-fpm:1.1
+        links:
+            - db
+        environment:
+            - PHP_POOL_LISTEN_HOST=0.0.0.0
+            - PHP_CONF_DISPLAY_ERRORS=on 
+            - PHP_CONF_ERROR_REPORTING=1
