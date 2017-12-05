@@ -5,7 +5,7 @@ services:
         build:
             context: ./
             dockerfile: docker/nginx/Dockerfile
-        image: gcr.io/test-teleprecense/kompose-web:1.1
+        image: gcr.io/test-teleprecense/kompose-web
         ports:
             - "8080:80"
         links:
@@ -14,7 +14,7 @@ services:
         build:
             context: ./
             dockerfile: docker/db/Dockerfile
-        image: gcr.io/test-teleprecense/kompose-db:1.1
+        image: gcr.io/test-teleprecense/kompose-db
         ports:
             - "3306:3306"
         environment:
@@ -26,7 +26,7 @@ services:
         build:
             context: ./
             dockerfile: docker/fpm/Dockerfile
-        image: gcr.io/test-teleprecense/kompose-fpm:1.1
+        image: gcr.io/test-teleprecense/kompose-fpm
         links:
             - db
         environment:

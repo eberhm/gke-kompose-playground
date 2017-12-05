@@ -5,7 +5,7 @@ services:
 #        build:
 #            context: ./
 #            dockerfile: docker/nginx/Dockerfile
-        image: gcr.io/test-teleprecense/kompose-web:1.1
+        image: gcr.io/test-teleprecense/kompose-web
 #        container_name: nginx
         ports:
             - "80:80"
@@ -20,7 +20,7 @@ services:
 #        build:
 #            context: ./
 #            dockerfile: docker/db/Dockerfile
-        image: gcr.io/test-teleprecense/kompose-db:1.1
+        image: gcr.io/test-teleprecense/kompose-db
 #        container_name: db
         ports:
             - "3306:3306"
@@ -37,7 +37,7 @@ services:
 #        build:
 #            context: ./
 #            dockerfile: docker/fpm/Dockerfile
-        image: gcr.io/test-teleprecense/kompose-fpm:1.1
+        image: gcr.io/test-teleprecense/kompose-fpm
 #        container_name: php
 #        volumes:
 #            - ./api:/source

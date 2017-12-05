@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+    php:
+        image: gcr.io/test-teleprecense/kompose-fpm
+        volumes:
+            - ./api:/source
+        working_dir: /source
+        ports:
+            - "9000:9000"
+        environment:
+            - PHP_POOL_LISTEN_HOST=0.0.0.0
+            - PHP_CONF_DISPLAY_ERRORS=on 
+            - PHP_CONF_ERROR_REPORTING=1
