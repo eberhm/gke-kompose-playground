@@ -24,7 +24,7 @@ https://www.telepresence.io/
 Provided you have already a GKE account setup, a project and a cluster already created (if you do not have any of those check https://deis.com/blog/2016/first-kubernetes-cluster-gke/). Go to project directory and build the images
 
 ```bash
-docker-compose -f docker-compose.build.yml build
+docker-compose -f docker-compose.local.yml build
 ```
 
 Push images to your gke cluster's registry
@@ -33,7 +33,7 @@ https://cloud.google.com/container-registry/docs/pushing-and-pulling
 
 ```bash
 gcloud docker -- push gcr.io/<your-project-id>/kompose-fpm
-gcloud docker -- push gcr.io/<your-project-id>/kompose-web
+gcloud docker -- push gcr.io/<your-project-id>/kompose-nginx
 gcloud docker -- push gcr.io/<your-project-id>/kompose-db
 ```
 
@@ -48,7 +48,7 @@ gcloud auth application-default login
 
 Deploy app in the cluster
 ```bash
-kompose up
+kompose -f docker-kompose.yml up
 ```
 
 In GKE expose the web pod with load balancer option
@@ -90,16 +90,16 @@ Install teleprecense https://www.telepresence.io/
 Run teleprecense
 
 ```bash
-telepresence --swap-deployment php --expose 9000:9000 --run-shel
+telepresence --swap-deployment fpm --expose 9000:9000 --run-shell
 ```
 
 This will log you in a new shell. From it just run
 
 ```bash
-docker-compose -f docker-compose.local.yml up -d
+docker-compose -f docker-compose.local.yml up -d fpm
 ```
 
-Note: You should have your application installed so you must need to do a local ```composer install```
+Note: You should have your application installed locally so you must need to do ```composer install```
 
 # Trobleshooting
 
